@@ -37,7 +37,7 @@ if '__name__' == __main__:
 	# Detect the color
 	response = vision_client.image_properties(image=image)
 	props = response.image_properties_annotation
-	print('Properties:')
+	print('Color properties:')
 
 	colorList = []
 	color_amnt_percentage = 0.25
@@ -45,7 +45,7 @@ if '__name__' == __main__:
 		if (color.pixel_fraction > color_amnt_percentage):
 			colorList.append(color.color)
 
-
+	print(colorList)
 
 '''
 def create_instance(compute, project, zone, name, bucket):
