@@ -14,7 +14,6 @@ output = image.copy()
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 circles = cv2.HoughCircles(gray, cv2.cvtColor(image, cv2.CV_HOUGH_GRADIENT, 1.0, 10)
-print circles 
 if len(circles) != 0:
     circles = np.round(circles[0, :]).astype("int")
 
