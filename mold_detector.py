@@ -33,7 +33,7 @@ colorList = []
 color_amnt_percentage = 0.25
 for color in props.dominant_colors.colors:
 	if (color.pixel_fraction > color_amnt_percentage):
-		colorList.append[color.color]
+		colorList.append(color.color)
 
 def getFungusStatus(labels):
 	status = 0
@@ -44,7 +44,7 @@ def getFungusStatus(labels):
 
 	return status
 
-
+'''
 def create_instance(compute, project, zone, name, bucket):
     # Get the latest Debian Jessie image.
     image_response = compute.images().getFromFamily(
@@ -118,3 +118,4 @@ def create_instance(compute, project, zone, name, bucket):
         zone=zone,
         body=config).execute()
 # [END create_instance]
+'''
