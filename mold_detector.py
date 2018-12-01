@@ -26,14 +26,9 @@ for label in labels:
 	print(label.description)
 
 # Detect the color
+response = vision_client.image_properties(image=image)
 props = response.image_properties_annotation
 print('Properties:')
-
-print(response)
-
-colorAnnotations = types.DominantColorsAnnotation()
-for color in colorAnnotations.colors:
-	print('fraction: {}'.format(color.pixel_fraction))
 
 for color in props.dominant_colors.colors:
 	print('fraction: {}'.format(color.pixel_fraction))
