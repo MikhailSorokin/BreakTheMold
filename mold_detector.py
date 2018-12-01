@@ -8,41 +8,42 @@ import argparse
 def getFungusStatus(labels):
 	status = 0
 	for label in labels:
-		if (label.contains("mold") or label.contains("fung")):
+		print(label.description)
+		if ("mold" in label or "fung" in label:
 			status = 1
-			print(label.description)
 
 	return status
 
-ap = argparse.ArgumentParser()
-ap.add_argument("-i", "--image", required = True, help = "Path to the image")
-args = vars(ap.parse_args())
+if '__name__' = __main__:
+	ap = argparse.ArgumentParser()
+	ap.add_argument("-i", "--image", required = True, help = "Path to the image")
+	args = vars(ap.parse_args())
 
-#Detect the image and then use google cloud's vision API
+	#Detect the image and then use google cloud's vision API
 
-vision_client = vision.ImageAnnotatorClient()
-file_name = args["image"]
+	vision_client = vision.ImageAnnotatorClient()
+	file_name = args["image"]
 
-with io.open(file_name, 'rb') as image_file:
-	content = image_file.read()
+	with io.open(file_name, 'rb') as image_file:
+		content = image_file.read()
 
-image = types.Image(content=content)
+	image = types.Image(content=content)
 
-response = vision_client.label_detection(image=image)
-labels = response.label_annotations
+	response = vision_client.label_detection(image=image)
+	labels = response.label_annotations
 
-status = getFungusStatus(labels)
+	status = getFungusStatus(labels)
 
-# Detect the color
-response = vision_client.image_properties(image=image)
-props = response.image_properties_annotation
-print('Properties:')
+	# Detect the color
+	response = vision_client.image_properties(image=image)
+	props = response.image_properties_annotation
+	print('Properties:')
 
-colorList = []
-color_amnt_percentage = 0.25
-for color in props.dominant_colors.colors:
-	if (color.pixel_fraction > color_amnt_percentage):
-		colorList.append(color.color)
+	colorList = []
+	color_amnt_percentage = 0.25
+	for color in props.dominant_colors.colors:
+		if (color.pixel_fraction > color_amnt_percentage):
+			colorList.append(color.color)
 
 
 
