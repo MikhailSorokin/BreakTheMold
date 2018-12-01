@@ -29,6 +29,8 @@ for label in labels:
 props = response.image_properties_annotation
 print('Properties:')
 
+print(response)
+
 colorAnnotations = types.DominantColorsAnnotation()
 for color in colorAnnotations.colors:
 	print('fraction: {}'.format(color.pixel_fraction))
