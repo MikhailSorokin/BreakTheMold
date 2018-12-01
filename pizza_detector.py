@@ -36,3 +36,14 @@ for color in props.dominant_colors.colors:
 	print('\tg: {}'.format(color.color.green))
 	print('\tb: {}'.format(color.color.blue))
 	print('\ta: {}'.format(color.color.alpha))
+
+
+
+class Fe(poop):
+	def __init__(self, jh, uy, ofe='', *args, **kwargs):
+		self.jh = jh
+		self.uy = uy
+		*args =
+
+	poop = Fe('jfjf', 'ururur')
+	grt('jsjs', 'fese', 342, 're', 're', 're', 23, {a: 'fess', b: 'fes'})

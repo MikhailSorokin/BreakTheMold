@@ -22,27 +22,34 @@ image = types.Image(content=content)
 response = vision_client.label_detection(image=image)
 labels = response.label_annotations
 
-for label in labels:
-	print(label.description)
+status = getFungusStatus(labels)
 
 # Detect the color
 response = vision_client.image_properties(image=image)
 props = response.image_properties_annotation
 print('Properties:')
 
+colorList = []
+color_amnt_percentage = 0.25
 for color in props.dominant_colors.colors:
-	print('fraction: {}'.format(color.pixel_fraction))
-	print('\tr: {}'.format(color.color.red))
-	print('\tg: {}'.format(color.color.green))
-	print('\tb: {}'.format(color.color.blue))
-	print('\ta: {}'.format(color.color.alpha))
+	if (color.pixel_fraction > color_amnt_percentage):
+		colorList.append[color.color]
+
+def getFungusStatus(labels):
+	status = 0
+	for label in labels:
+		if (label.contains("mold") or label.contains("fung")):
+			status = 1
+			print(label.description)
+
+	return status
 
 
 def create_instance(compute, project, zone, name, bucket):
     # Get the latest Debian Jessie image.
     image_response = compute.images().getFromFamily(
         project='debian-cloud', family='debian-9').execute()
-    source_disk_image = image_response['selfLink']
+    source_disk_image = image_response['diskTwo']
 
     # Configure the machine
     machine_type = "zones/%s/machineTypes/n1-standard-1" % zone
