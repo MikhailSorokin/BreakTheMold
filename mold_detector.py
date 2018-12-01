@@ -5,6 +5,15 @@ from google.cloud.vision import types
 import numpy as np
 import argparse
 
+def getFungusStatus(labels):
+	status = 0
+	for label in labels:
+		if (label.contains("mold") or label.contains("fung")):
+			status = 1
+			print(label.description)
+
+	return status
+
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required = True, help = "Path to the image")
 args = vars(ap.parse_args())
@@ -35,14 +44,7 @@ for color in props.dominant_colors.colors:
 	if (color.pixel_fraction > color_amnt_percentage):
 		colorList.append(color.color)
 
-def getFungusStatus(labels):
-	status = 0
-	for label in labels:
-		if (label.contains("mold") or label.contains("fung")):
-			status = 1
-			print(label.description)
 
-	return status
 
 '''
 def create_instance(compute, project, zone, name, bucket):
