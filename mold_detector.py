@@ -14,7 +14,7 @@ image = cv2.imread(args["image"])
 output = image.copy()
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-#cv2.imshow('HAH', gray)
+cv2.imshow('HAH', gray)
 
 '''
     circles = cv2.HoughCircles(gray, cv2.cv.CV_HOUGH_GRADIENT, 1.0, 100)
