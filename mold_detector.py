@@ -9,7 +9,7 @@ def getFungusStatus(labels):
 	status = 0
 	for label in labels:
 		print(label.description)
-		if ("mold" in label or "fung" in label):
+		if ("mold" in label.description or "fung" in label.description):
 			status = 1
 
 	return status
