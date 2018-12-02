@@ -21,11 +21,10 @@ def create_ImageRequest(bStatus, colorList):
 	payload = {}
 	payload['fungusStatus'] = bStatus
 	payload['colors'] = []
-	for (color in colorList) {
+	for (color in colorList):
 		payload['colors'].append({
 		    'color': color
 		})
-	}
 
 	print(json.dumps(payload)))
 
