@@ -30,14 +30,11 @@ def create_ImageRequest(bStatus, colorList):
 		    'blue': color.blue 
 		})
 
-	print(json.dumps(payload))
+	jsonDump = json.dumps(payload)
 
-        makeImageRequest = requests.post('https://slewando.wixsite.com/',
-		json.dumps(payload))
+	makeImageRequest = requests.post('https://slewando.wixsite.com/receive-data', jsonDump)
 
 	print(makeImageRequest.url)
-
-    #print(makeImageRequest.url)
 # [END create_instance]
 
 if __name__ == '__main__':
