@@ -2,6 +2,8 @@ import io
 from google.cloud import vision
 from google.cloud.vision import types
 
+import json
+
 import numpy as np
 import argparse
 import requests
@@ -21,18 +23,19 @@ def create_ImageRequest(bStatus, colorList):
 	payload = {}
 	payload['fungusStatus'] = bStatus
 	payload['colors'] = []
-	for (color in colorList):
+	for color in colorList:
 		payload['colors'].append({
-		    'color': color
+		    'red': color.red,
+		    'green': color.green,
+		    'blue': color.blue 
 		})
 
-	print(json.dumps(payload)))
+	print(json.dumps(payload))
 
-    #makeImageRequest = requests.post('https://slewando.wixsite.com/',
-	#		json.dumps(payload))
+        makeImageRequest = requests.post('https://slewando.wixsite.com/',
+		json.dumps(payload))
 
 	print(makeImageRequest.url)
-	#makeImageRequest = requests.post('https://slewando.wixsite.com/', data = {'key': 'val'})
 
     #print(makeImageRequest.url)
 # [END create_instance]
