@@ -18,13 +18,19 @@ def getFungusStatus(labels):
 
 
 def create_ImageRequest(bStatus, colorList):
+	payload = {}
+	payload['fungusStatus'] = bStatus
+	payload['colors'] = []
+	for (color in colorList) {
+		payload['colors'].append({
+		    'color': color
+		})
+	}
 
-	for each text in textDescriptors:
+	print(json.dumps(payload)))
 
-	headers = {'Status': 'Fungus', 'Colors': 'colors'}
-
-    makeImageRequest = requests.post('https://slewando.wixsite.com/',
-	auth=('user', 'pass'), data = bStatus)
+    #makeImageRequest = requests.post('https://slewando.wixsite.com/',
+	#		json.dumps(payload))
 
 	print(makeImageRequest.url)
 	#makeImageRequest = requests.post('https://slewando.wixsite.com/', data = {'key': 'val'})
@@ -58,9 +64,11 @@ if __name__ == '__main__':
 	print('Color properties:')
 
 	colorList = []
-	color_amnt_percentage = 0.25
+	color_amnt_percentage = 0.10
 	for color in props.dominant_colors.colors:
-		if (color.pixel_fraction > color_amnt_percentage):
+		if (color.pixel_fraction >= color_amnt_percentage):
 			colorList.append(color.color)
 
 	print(colorList)
+
+	create_ImageRequest(status, colorList)
